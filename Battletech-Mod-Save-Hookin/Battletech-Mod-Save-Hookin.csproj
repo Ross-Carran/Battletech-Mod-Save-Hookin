@@ -34,5 +34,8 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Core" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Battletech-Mod-Save-Hookin.cs" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

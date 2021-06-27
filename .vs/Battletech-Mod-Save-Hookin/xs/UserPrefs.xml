@@ -1,11 +1,14 @@
 ﻿<Properties StartupConfiguration="{5E29A155-B064-4BE0-B79C-A7AD34BB57D0}|Default">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Battletech-Mod-Save-Hookin/Battletech-Mod-Save-Hookin.cs">
+    <Files>
+      <File FileName="Battletech-Mod-Save-Hookin/Battletech-Mod-Save-Hookin.cs" Line="1" Column="1" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Battletech-Mod-Save-Hookin" expanded="True">
             <Node name="Battletech-Mod-Save-Hookin" expanded="True">
-              <Node name="References" selected="True" />
+              <Node name="Battletech-Mod-Save-Hookin.cs" selected="True" />
             </Node>
           </Node>
         </State>
