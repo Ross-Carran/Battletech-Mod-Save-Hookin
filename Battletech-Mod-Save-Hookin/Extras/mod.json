@@ -1,0 +1,17 @@
+﻿{
+    "Name": "Battletech-Mod-Save-Hookin",
+    "Enabled": true,
+
+    "Version": "0.0.1",
+    "Description": "Adds in sqlite functionality for making mod saves",
+    "Author": "Ross-Carran",
+    "Website": "",
+    "Contact": "carran.ross@gmail.com",
+
+    "DLL": "Battletech-Mod-Save-Hookin.dll",
+    "Settings": {
+    },
+
+    "Manifest": [
+    ]
+}

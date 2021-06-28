@@ -2,8 +2,8 @@
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{5E29A155-B064-4BE0-B79C-A7AD34BB57D0}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <RootNamespace>BattletechModSaveHookin</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -13,12 +13,14 @@
     <DefineConstants>DEBUG;</DefineConstants>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
@@ -36,6 +38,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Battletech-Mod-Save-Hookin.cs" />
+    <Compile Include="Globals.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Extras\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Extras\mod.json" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
