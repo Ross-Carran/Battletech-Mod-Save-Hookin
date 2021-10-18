@@ -23,22 +23,30 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="0Harmony">
-      <HintPath>..\..\..\.paradox-launcher\data\games\battletech\Mods\ModTek\0Harmony.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\..\.paradox-launcher\data\games\battletech\Mods\ModTek\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Mono.Data.Sqlite" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Core" />
+    <Reference Include="0Harmony">
+      <HintPath>..\..\..\.steam\steam\steamapps\common\BATTLETECH\Mods\ModTek\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\.steam\steam\steamapps\common\BATTLETECH\Mods\ModTek\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\.steam\steam\steamapps\common\BATTLETECH\BattleTech_Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\..\.steam\steam\steamapps\common\BATTLETECH\BattleTech_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Battletech-Mod-Save-Hookin.cs" />
     <Compile Include="Globals.cs" />
+    <Compile Include="SqLightTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Extras\" />
