@@ -1,10 +1,12 @@
 ﻿using System;
 namespace BattletechModSaveHookin
 {
-    public class Globals
+    static class Globals
     {
-        public Globals()
+        public static void Dbrun()
         {
+            SqLightTest test = new SqLightTest();
+            test.Start();
         }
     }
 }

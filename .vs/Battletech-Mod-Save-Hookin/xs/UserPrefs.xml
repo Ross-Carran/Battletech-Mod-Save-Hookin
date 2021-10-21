@@ -1,18 +1,19 @@
-﻿<Properties StartupConfiguration="{5E29A155-B064-4BE0-B79C-A7AD34BB57D0}|Default">
+﻿<Properties>
   <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="Battletech-Mod-Save-Hookin/Battletech-Mod-Save-Hookin.cs" Line="14" Column="40" />
-      <File FileName="Battletech-Mod-Save-Hookin/Extras/mod.json" Line="4" Column="5" />
-      <File FileName="Battletech-Mod-Save-Hookin/Globals.cs" Line="9" Column="10" />
+      <File FileName="Battletech-Mod-Save-Hookin/Battletech-Mod-Save-Hookin.cs" Line="29" Column="14" />
+      <File FileName="Battletech-Mod-Save-Hookin/Extras/mod.json" Line="4" Column="1" />
+      <File FileName="Battletech-Mod-Save-Hookin/Globals.cs" Line="9" Column="26" />
+      <File FileName="Battletech-Mod-Save-Hookin/SqLightTest.cs" Line="24" Column="40" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Battletech-Mod-Save-Hookin" expanded="True">
             <Node name="Battletech-Mod-Save-Hookin" expanded="True">
-              <Node name="References" expanded="True">
-                <Node name="Mono.Data.Sqlite, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756" selected="True" />
-              </Node>
+              <Node name="References" expanded="True" />
+              <Node name="Extras" expanded="True" />
+              <Node name="SqLightTest.cs" selected="True" />
             </Node>
           </Node>
         </State>

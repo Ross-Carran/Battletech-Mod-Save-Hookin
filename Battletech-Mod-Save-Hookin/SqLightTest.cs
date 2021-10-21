@@ -6,6 +6,7 @@
  * The DataBase construction for Battletech will be complex and I don't see the point in re-creating the wheel for a test.
  * 
  * */
+using Harmony;
 using UnityEngine;
 using System.Data;
 using Mono.Data.Sqlite;
@@ -15,11 +16,15 @@ namespace BattletechModSaveHookin
 {
     public class SqLightTest : MonoBehaviour
     {
-        void Start()
+
+        public void Start()
         {
 
+            //--------------------------------------------------------------------------------------------------
+            // currently saves to $HOME/.config/unity3d/Harebrained Schemes/BATTLETECH/
             // Create database
             string connection = "URI=file:" + Application.persistentDataPath + "/" + "My_Database";
+            // string connection = "URI=file:" + "/home/ross" + "/" + "My_Database";
 
             // Open connection
             IDbConnection dbcon = new SqliteConnection(connection);
@@ -32,9 +37,10 @@ namespace BattletechModSaveHookin
 
             dbcmd.CommandText = q_createTable;
             dbcmd.ExecuteReader();
+            //---------------------------------------------------------------------------------------------------
 
             // Insert values in table
-            IDbCommand cmnd = dbcon.CreateCommand();
+            /*IDbCommand cmnd = dbcon.CreateCommand();
             cmnd.CommandText = "INSERT INTO my_table (id, val) VALUES (0, 5)";
             cmnd.ExecuteNonQuery();
 
@@ -47,9 +53,9 @@ namespace BattletechModSaveHookin
 
             while (reader.Read())
             {
-                Debug.Log("id: " + reader[0].ToString());
-                Debug.Log("val: " + reader[1].ToString());
-            }
+                 FileLog.Log("id: " + reader[0].ToString());
+                 FileLog.Log("val: " + reader[1].ToString());
+            }*/
 
             // Close connection
             dbcon.Close();
