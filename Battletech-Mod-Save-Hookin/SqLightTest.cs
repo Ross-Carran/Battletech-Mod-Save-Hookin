@@ -14,12 +14,11 @@ using Mono.Data.Sqlite;
 
 namespace BattletechModSaveHookin
 {
-    public class SqLightTest : MonoBehaviour
+    public class SqLightTest
     {
 
         public void Start()
         {
-
             //--------------------------------------------------------------------------------------------------
             // currently saves to $HOME/.config/unity3d/Harebrained Schemes/BATTLETECH/
             // Create database
@@ -59,12 +58,6 @@ namespace BattletechModSaveHookin
 
             // Close connection
             dbcon.Close();
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
 
         }
     }
