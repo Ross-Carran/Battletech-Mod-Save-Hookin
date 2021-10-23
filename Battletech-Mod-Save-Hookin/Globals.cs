@@ -20,7 +20,13 @@ namespace BattletechModSaveHookin
      *     
      * E.g. you change the value of heatsinks or something similar, battletech wont need to have some dodgy serialisation code hacked into
      * it because all yourve done is changed the value of a original property in heatsinks which battletech already knows how to properly save/serialise.
-     *  
+     * 
+     * The objective is to use this mod to save the data that BattleTech doesn't know how to work with, which is needed to be saved, for the mods to 
+     * continue working correctly.
+     * 
+     * Which should in turn, make this mods saving process significantly easier as it will not be trying re-save the entirity of what battletech normally
+     * saves/serializes. So instead of re-creating the wheel, this mod is placing a new wheel that works in tandem with the old wheel.
+     *     
      * Just theory on my end, still need to impliment to see if the thought process is correct.    
      */
     static class Globals
