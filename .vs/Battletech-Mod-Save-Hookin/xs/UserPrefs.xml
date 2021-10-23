@@ -1,10 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="Battletech-Mod-Save-Hookin/Battletech-Mod-Save-Hookin.cs" Line="27" Column="33" />
-      <File FileName="Battletech-Mod-Save-Hookin/Extras/mod.json" Line="4" Column="1" />
-      <File FileName="Battletech-Mod-Save-Hookin/Globals.cs" Line="23" Column="8" />
-      <File FileName="Battletech-Mod-Save-Hookin/SqLightTest.cs" Line="62" Column="10" />
+      <File FileName="Battletech-Mod-Save-Hookin/Battletech-Mod-Save-Hookin.cs" Line="44" Column="44" />
+      <File FileName="Battletech-Mod-Save-Hookin/Extras/mod.json" />
+      <File FileName="Battletech-Mod-Save-Hookin/Globals.cs" />
+      <File FileName="Battletech-Mod-Save-Hookin/SqLightTest.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -13,7 +13,7 @@
             <Node name="Battletech-Mod-Save-Hookin" expanded="True">
               <Node name="References" expanded="True" />
               <Node name="Extras" expanded="True" />
-              <Node name="Globals.cs" selected="True" />
+              <Node name="Battletech-Mod-Save-Hookin.cs" selected="True" />
             </Node>
           </Node>
         </State>
