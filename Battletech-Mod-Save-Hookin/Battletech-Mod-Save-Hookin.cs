@@ -25,6 +25,14 @@ namespace BattletechModSaveHookin
             {
                 FileLog.Log("A Save has been made");
                 Globals.Dbrun();
+
+                // Class needs to be made, well doesnt need to be
+                // going to pass __instance and gameInstance to globals in a method
+                // then run these logs bit stuffed if i can't do it 
+                // have been reading about sql and normalisation from domain classes to relational databases
+                // the data base side of things, is kinda new well a re-learn -_- may as well be a new learn 
+                // guess the sayings true, if you don't use it you lose it.
+
                 FileLog.Log("Save Time: " + __instance.SaveTime.Ticks.ToString());
                 FileLog.Log("FileGUID: " + __instance.InstanceGUID);
                 FileLog.Log("Commander Name: " + gameInstance.Simulation.Commander.Name);
