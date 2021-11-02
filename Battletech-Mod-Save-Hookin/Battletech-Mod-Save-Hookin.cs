@@ -64,5 +64,21 @@ namespace BattletechModSaveHookin
                 FileLog.Log("FileGUID: " + save.InstanceGUID);
             }
         }
+
+        /*
+         * Generic save game load point       
+         */       
+        [HarmonyPatch(typeof(GameInstance))]
+        [HarmonyPatch("Load")]
+        public class Sql_Hookin_Load_Game_Patch
+        {
+            [HarmonyPostfix]
+            public static void Postfix(GameInstanceSave save)
+            {
+                FileLog.Log("Save Game Being Loaded");
+                FileLog.Log("Save Time: " + save.SaveTime.Ticks.ToString());
+                FileLog.Log("FileGUID: " + save.InstanceGUID);
+            }
+        }
     }
 }
