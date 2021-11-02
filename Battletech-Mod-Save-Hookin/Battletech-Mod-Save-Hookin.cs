@@ -15,6 +15,10 @@ namespace BattletechModSaveHookin
             harmony.PatchAll(Assembly.GetExecutingAssembly());
         }
 
+        // These are just where I figure the entry points should be, should still have at least one more for loading campaign/career saves
+        // obviously there will need to be some code that does checks and what not.
+        // the heavy lifting is actually going to be in writing the code that will generate the base save structure in sql
+        // if thats crap im going to to have no end of problems moving forward, pretty sure i'm overthinking this.
         [HarmonyPatch(typeof(GameInstanceSave))]
         [HarmonyPatch(MethodType.Constructor)]
         [HarmonyPatch(new Type[] { typeof(GameInstance), typeof(SaveReason) })]
@@ -33,21 +37,29 @@ namespace BattletechModSaveHookin
                 // the data base side of things, is kinda new well a re-learn -_- may as well be a new learn 
                 // guess the sayings true, if you don't use it you lose it.
 
-                FileLog.Log("Save Time: " + __instance.SaveTime.Ticks.ToString());
-                FileLog.Log("FileGUID: " + __instance.InstanceGUID);
-                FileLog.Log("Commander Name: " + gameInstance.Simulation.Commander.Name);
-                FileLog.Log("Company Name: " + gameInstance.Simulation.CompanyName);
+                // works, that is a releif 
+                Globals.ParamTest(__instance, gameInstance);
             }
         }
 
+        /*
+         * Combat load hookin, test point.       
+         * Not Currently needed hopefully, adding in potential hookin points
+         * but will be focusing on getting carrer save's/load's working first.
+         */       
         [HarmonyPatch(typeof(GameInstance))]
         [HarmonyPatch("CreateCombatFromSave")]
         public class Sql_Hookin_Combat_Load_Patch
         {
             [HarmonyPostfix]
-            public static void Postfix(GameInstanceSave save)
+            public static void Postfix(GameInstance __instance, GameInstanceSave save)
             {
                 FileLog.Log("Combat save being loaded");
+                if (!save.IsSkirmish)
+                {
+                    FileLog.Log("Commander Name: " + __instance.Simulation.Commander.Name);
+                    FileLog.Log("Company Name: " + __instance.Simulation.CompanyName);
+                }
                 FileLog.Log("Save Time: " + save.SaveTime.Ticks.ToString());
                 FileLog.Log("FileGUID: " + save.InstanceGUID);
             }
