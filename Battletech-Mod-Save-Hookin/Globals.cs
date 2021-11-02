@@ -1,4 +1,7 @@
 ﻿using System;
+using Harmony;
+using BattleTech;
+using BattleTech.Save;
 namespace BattletechModSaveHookin
 {
     /*
@@ -37,6 +40,14 @@ namespace BattletechModSaveHookin
         public static void Dbrun()
         {
             test.Start();
+        }
+
+        public static void ParamTest(GameInstanceSave __instance, GameInstance gameInstance)
+        {
+            FileLog.Log("Save Time: " + __instance.SaveTime.Ticks.ToString());
+            FileLog.Log("FileGUID: " + __instance.InstanceGUID);
+            FileLog.Log("Commander Name: " + gameInstance.Simulation.Commander.Name);
+            FileLog.Log("Company Name: " + gameInstance.Simulation.CompanyName);
         }
     }
 }
