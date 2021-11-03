@@ -10,7 +10,7 @@ using Harmony;
 using UnityEngine;
 using System.Data;
 using Mono.Data.Sqlite;
-//using System.IO;
+using System.IO;
 
 namespace BattletechModSaveHookin
 {
@@ -20,11 +20,22 @@ namespace BattletechModSaveHookin
         public void Start()
         {
             //--------------------------------------------------------------------------------------------------
-            // currently saves to $HOME/.config/unity3d/Harebrained Schemes/BATTLETECH/
+            /* 
+             * Gets the directory path to where the Battletech executable is adds a custom subdirectory
+             * checks if the path exists, if it doesn't creats the directory.
+             * Directory is place for storing the database.
+             */
             // Create database
-            string connection = "URI=file:" + Application.persistentDataPath + "/" + "My_Database";
-            // string connection = "URI=file:" + "/home/ross" + "/" + "My_Database";
+            FileLog.Log("Current Directory is: " + Directory.GetCurrentDirectory());
+            string mod_Save_Path = Directory.GetCurrentDirectory() + "/Mod_Saves";
+            if(!Directory.Exists(mod_Save_Path))
+            {
+                Directory.CreateDirectory(mod_Save_Path);
+            }
 
+            string connection = "URI=file:" + mod_Save_Path + "/My_Database";
+            // string connection = "URI=file:" + "/home/ross" + "/" + "My_Database";
+            
             // Open connection
             IDbConnection dbcon = new SqliteConnection(connection);
             dbcon.Open();
