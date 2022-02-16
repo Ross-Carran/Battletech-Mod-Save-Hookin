@@ -50,13 +50,45 @@ namespace BattletechModSaveHookin
             //---------------------------------------------------------------------------------------------------
 
             // Insert values in table
-            /*IDbCommand cmnd = dbcon.CreateCommand();
-            cmnd.CommandText = "INSERT INTO my_table (id, val) VALUES (0, 5)";
-            cmnd.ExecuteNonQuery();
+            IDbCommand cmnd = dbcon.CreateCommand();
+
+            int myId = 0;
+            int myValue = 20;
+
+            cmnd.CommandText = "SELECT NOT EXISTS(SELECT 1 FROM my_table WHERE id=" + myId + " AND val=" + myValue + ")";
+            
+            //cmnd.CommandText = "INSERT OR REPLACE INTO my_table (id, val) VALUES (0, 5)";
+            //cmnd.ExecuteNonQuery();
 
             // Read and print all values in table
             IDbCommand cmnd_read = dbcon.CreateCommand();
             IDataReader reader;
+
+            reader = cmnd.ExecuteReader();
+            FileLog.Log("value " + reader.GetValue(0));
+
+            if (reader.GetValue(0).ToString() == "1")
+            {
+                reader.Dispose();
+                cmnd.CommandText = "SELECT EXISTS(SELECT 1 FROM my_table WHERE id=" + myId + ")";
+                reader = cmnd.ExecuteReader();
+
+                if (reader.GetValue(0).ToString() == "1")
+                {
+                    reader.Dispose();
+                    cmnd.CommandText = "UPDATE my_table SET val=" + myValue + " WHERE id=" + myId;
+                    cmnd.ExecuteNonQuery();
+                }
+                else
+                {
+                    reader.Dispose();
+                    cmnd.CommandText = "INSERT OR REPLACE INTO my_table (id, val) VALUES (" + myId + ", " + myValue + ")";
+                    cmnd.ExecuteNonQuery();
+                }
+
+            }
+            reader.Dispose();
+
             string query = "SELECT * FROM my_table";
             cmnd_read.CommandText = query;
             reader = cmnd_read.ExecuteReader();
@@ -65,7 +97,7 @@ namespace BattletechModSaveHookin
             {
                  FileLog.Log("id: " + reader[0].ToString());
                  FileLog.Log("val: " + reader[1].ToString());
-            }*/
+            }
 
             // Close connection
             dbcon.Close();
