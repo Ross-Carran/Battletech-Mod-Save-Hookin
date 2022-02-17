@@ -37,6 +37,12 @@ namespace BattletechModSaveHookin
         // create a perminant instance of SqLightTest instead of re-creating it every time Dbrun() is called
         private static SqLightTest test = new SqLightTest();
         private static string currentTimeChain;
+        private static string lastTimeChain;
+        private static string saveReason;
+        private static bool isIronmanCampaign;
+        private static bool isCampaign;
+        private static bool isCareer;
+        private static bool isStoryMission;
 
         public static void Dbrun()
         {
@@ -45,20 +51,63 @@ namespace BattletechModSaveHookin
 
         public static void ParamTest(GameInstanceSave __instance, GameInstance gameInstance)
         {
+
             FileLog.Log("Save Time: " + __instance.SaveTime.Ticks.ToString());
             FileLog.Log("FileGUID: " + __instance.InstanceGUID);
             FileLog.Log("Commander Name: " + gameInstance.Simulation.Commander.Name);
             FileLog.Log("Company Name: " + gameInstance.Simulation.CompanyName);
+
+            FileLog.Log("Save Reason: " + saveReason);
+            FileLog.Log("Ironman Campaign: " + isIronmanCampaign);
+            FileLog.Log("Campaign: " + isCampaign);
+            FileLog.Log("Career: " + isCareer);
+            FileLog.Log("Story Mission: " + isStoryMission);
         }
 
         public static void TimeChain(GameInstanceSave __instance)
         {
+            //saveReason = __instance.SaveReason.ToString();
+            isIronmanCampaign = __instance.IsIronmanCampaign;
+            isCampaign = __instance.IsCampaign;
+            isCareer = __instance.IsCareer;
+            isStoryMission = __instance.IsStoryMission;
+
             currentTimeChain = __instance.SaveTime.Ticks.ToString();
+
+            if(lastTimeChain == null)
+            {
+                lastTimeChain = currentTimeChain;
+            }
         }
 
         public static string CurrentTimeChain()
         {
             return currentTimeChain;
+        }
+
+        public static bool IsIronmanCampaign()
+        {
+            return isIronmanCampaign;
+        }
+
+        public static string LastTimeChain()
+        {
+            return lastTimeChain;
+        }
+
+        public static void GetLastTimeChain(string timechain)
+        {
+            lastTimeChain = timechain;
+        }
+
+        public static string SaveReason()
+        {
+            return saveReason;
+        }
+
+        public static void GetSaveReason(GameInstanceSave __instance)
+        {
+            saveReason = __instance.SaveReason.ToString();
         }
     }
 }

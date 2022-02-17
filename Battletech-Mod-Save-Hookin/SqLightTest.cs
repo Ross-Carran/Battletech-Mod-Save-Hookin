@@ -110,10 +110,19 @@ namespace BattletechModSaveHookin
                 else
                 {*/
                 reader.Dispose();
+                if (Globals.IsIronmanCampaign() && (Globals.SaveReason() != "SIM_GAME_FIRST_SAVE"))
+                {
+                    FileLog.Log("Last Time Chain: " + Globals.LastTimeChain()); 
+                    cmnd.CommandText = "DELETE FROM save_table WHERE id=" + Globals.LastTimeChain();
+                    cmnd.ExecuteNonQuery();
+                    FileLog.Log("Made it to the Ironman Loop: " + Globals.SaveReason());
+                }
+
                 cmnd.CommandText = "INSERT INTO save_table (id) VALUES (" + timeChain + ")";
                 cmnd.ExecuteNonQuery();
                 //}
             }
+
             reader.Dispose();
 
             string query = "SELECT * FROM save_table";

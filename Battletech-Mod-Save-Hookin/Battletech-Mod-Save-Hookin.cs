@@ -28,6 +28,9 @@ namespace BattletechModSaveHookin
             public static void Postfix(GameInstanceSave __instance, GameInstance gameInstance)
             {
                 FileLog.Log("A Save has been made");
+                Globals.GetSaveReason(__instance);
+                FileLog.Log("begginer dave reason: " + Globals.SaveReason());
+                Globals.ParamTest(__instance, gameInstance);
                 Globals.TimeChain(__instance);
                 Globals.Dbrun();
 
@@ -39,7 +42,7 @@ namespace BattletechModSaveHookin
                 // guess the sayings true, if you don't use it you lose it.
 
                 // works, that is a releif 
-                Globals.ParamTest(__instance, gameInstance);
+               
             }
         }
 
@@ -76,6 +79,7 @@ namespace BattletechModSaveHookin
             [HarmonyPostfix]
             public static void Postfix(GameInstanceSave save)
             {
+                Globals.GetLastTimeChain(save.SaveTime.Ticks.ToString());
                 FileLog.Log("Save Game Being Loaded");
                 FileLog.Log("Save Time: " + save.SaveTime.Ticks.ToString());
                 FileLog.Log("FileGUID: " + save.InstanceGUID);
