@@ -56,8 +56,14 @@ namespace BattletechModSaveHookin
             //int myValue = 20;
             string timeChain = Globals.CurrentTimeChain();
 
-            cmnd.CommandText = "SELECT NOT EXISTS(SELECT 1 FROM save_table WHERE id=" + timeChain + ")";
+            cmnd.CommandText = "SELECT NOT EXISTS(SELECT 1 FROM save_table WHERE id=@timeChain)";
+            SqliteParameter myParam = new SqliteParameter("@timeChain", DbType.String)
+            {
+                Value = timeChain
+            };
+            cmnd.Parameters.Add(myParam);
             
+
             //cmnd.CommandText = "INSERT OR REPLACE INTO my_table (id, val) VALUES (0, 5)";
             //cmnd.ExecuteNonQuery();
 
@@ -113,12 +119,23 @@ namespace BattletechModSaveHookin
                 if (Globals.IsIronmanCampaign() && (Globals.SaveReason() != "SIM_GAME_FIRST_SAVE"))
                 {
                     FileLog.Log("Last Time Chain: " + Globals.LastTimeChain()); 
-                    cmnd.CommandText = "DELETE FROM save_table WHERE id=" + Globals.LastTimeChain();
+                    cmnd.CommandText = "DELETE FROM save_table WHERE id=@lastTimeChain";
+                    SqliteParameter lastTimeChainParam = new SqliteParameter("@lastTimeChain", DbType.String)
+                    {
+                        Value = Globals.LastTimeChain()
+                    };
+                    cmnd.Parameters.Add(lastTimeChainParam);
                     cmnd.ExecuteNonQuery();
+                    reader.Dispose();
                     FileLog.Log("Made it to the Ironman Loop: " + Globals.SaveReason());
                 }
 
-                cmnd.CommandText = "INSERT INTO save_table (id) VALUES (" + timeChain + ")";
+                cmnd.CommandText = "INSERT INTO save_table (id) VALUES (@timeChain)";
+                SqliteParameter timeChainParam = new SqliteParameter("@timeChain", DbType.String)
+                {
+                    Value = timeChain
+                };
+                cmnd.Parameters.Add(timeChainParam);
                 cmnd.ExecuteNonQuery();
                 //}
             }

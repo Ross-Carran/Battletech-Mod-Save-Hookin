@@ -1,10 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workbench ActiveDocument="Battletech-Mod-Save-Hookin/SqLightTest.cs">
     <Files>
-      <File FileName="Battletech-Mod-Save-Hookin/Battletech-Mod-Save-Hookin.cs" Line="31" Column="33" />
+      <File FileName="Battletech-Mod-Save-Hookin/Battletech-Mod-Save-Hookin.cs" Line="3" Column="25" />
       <File FileName="Battletech-Mod-Save-Hookin/Extras/mod.json" />
       <File FileName="Battletech-Mod-Save-Hookin/Globals.cs" />
-      <File FileName="Battletech-Mod-Save-Hookin/SqLightTest.cs" Line="56" Column="28" />
+      <File FileName="Battletech-Mod-Save-Hookin/SqLightTest.cs" Line="134" Column="61" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
