@@ -33,7 +33,7 @@ namespace BattletechModSaveHookin
                 Directory.CreateDirectory(mod_Save_Path);
             }
 
-            string connection = "URI=file:" + mod_Save_Path + "/My_Database";
+            string connection = "URI=file:" + mod_Save_Path + "/Saves";
             // string connection = "URI=file:" + "/home/ross" + "/" + "My_Database";
             
             // Open connection
@@ -43,7 +43,7 @@ namespace BattletechModSaveHookin
             // Create table
             IDbCommand dbcmd;
             dbcmd = dbcon.CreateCommand();
-            string q_createTable = "CREATE TABLE IF NOT EXISTS my_table (id INTEGER PRIMARY KEY, val INTEGER )";
+            string q_createTable = "CREATE TABLE IF NOT EXISTS save_table (id STRING PRIMARY KEY)";
 
             dbcmd.CommandText = q_createTable;
             dbcmd.ExecuteReader();
@@ -52,10 +52,11 @@ namespace BattletechModSaveHookin
             // Insert values in table
             IDbCommand cmnd = dbcon.CreateCommand();
 
-            int myId = 0;
-            int myValue = 20;
+            //int myId = 0;
+            //int myValue = 20;
+            string timeChain = Globals.CurrentTimeChain();
 
-            cmnd.CommandText = "SELECT NOT EXISTS(SELECT 1 FROM my_table WHERE id=" + myId + " AND val=" + myValue + ")";
+            cmnd.CommandText = "SELECT NOT EXISTS(SELECT 1 FROM save_table WHERE id=" + timeChain + ")";
             
             //cmnd.CommandText = "INSERT OR REPLACE INTO my_table (id, val) VALUES (0, 5)";
             //cmnd.ExecuteNonQuery();
@@ -92,10 +93,12 @@ namespace BattletechModSaveHookin
             // for a save. any following tables made for that save will have that savegame number chain as a key or part of a combined key or table name, currently unsure.
             // savegame table --> name of dicionary as table name --> this is a horrible mess and ill just try and do it -_-
 
+            // The other option is to have a new database for each new savegame
+
             if (reader.GetValue(0).ToString() == "1")
             {
-                reader.Dispose();
-                cmnd.CommandText = "SELECT EXISTS(SELECT 1 FROM my_table WHERE id=" + myId + ")";
+                /*reader.Dispose();
+                cmnd.CommandText = "SELECT EXISTS(SELECT 1 FROM my_table WHERE id=" + timeChain + ")";
                 reader = cmnd.ExecuteReader();
 
                 if (reader.GetValue(0).ToString() == "1")
@@ -105,23 +108,22 @@ namespace BattletechModSaveHookin
                     cmnd.ExecuteNonQuery();
                 }
                 else
-                {
-                    reader.Dispose();
-                    cmnd.CommandText = "INSERT OR REPLACE INTO my_table (id, val) VALUES (" + myId + ", " + myValue + ")";
-                    cmnd.ExecuteNonQuery();
-                }
-
+                {*/
+                reader.Dispose();
+                cmnd.CommandText = "INSERT INTO save_table (id) VALUES (" + timeChain + ")";
+                cmnd.ExecuteNonQuery();
+                //}
             }
             reader.Dispose();
 
-            string query = "SELECT * FROM my_table";
+            string query = "SELECT * FROM save_table";
             cmnd_read.CommandText = query;
             reader = cmnd_read.ExecuteReader();
 
             while (reader.Read())
             {
                  FileLog.Log("id: " + reader[0].ToString());
-                 FileLog.Log("val: " + reader[1].ToString());
+                 //FileLog.Log("val: " + reader[1].ToString());
             }
 
             // Close connection

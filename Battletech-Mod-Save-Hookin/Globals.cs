@@ -36,6 +36,7 @@ namespace BattletechModSaveHookin
     {
         // create a perminant instance of SqLightTest instead of re-creating it every time Dbrun() is called
         private static SqLightTest test = new SqLightTest();
+        private static string currentTimeChain;
 
         public static void Dbrun()
         {
@@ -48,6 +49,16 @@ namespace BattletechModSaveHookin
             FileLog.Log("FileGUID: " + __instance.InstanceGUID);
             FileLog.Log("Commander Name: " + gameInstance.Simulation.Commander.Name);
             FileLog.Log("Company Name: " + gameInstance.Simulation.CompanyName);
+        }
+
+        public static void TimeChain(GameInstanceSave __instance)
+        {
+            currentTimeChain = __instance.SaveTime.Ticks.ToString();
+        }
+
+        public static string CurrentTimeChain()
+        {
+            return currentTimeChain;
         }
     }
 }

@@ -28,6 +28,7 @@ namespace BattletechModSaveHookin
             public static void Postfix(GameInstanceSave __instance, GameInstance gameInstance)
             {
                 FileLog.Log("A Save has been made");
+                Globals.TimeChain(__instance);
                 Globals.Dbrun();
 
                 // Class needs to be made, well doesnt need to be
