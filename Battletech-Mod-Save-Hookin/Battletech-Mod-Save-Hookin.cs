@@ -79,6 +79,7 @@ namespace BattletechModSaveHookin
             [HarmonyPostfix]
             public static void Postfix(GameInstanceSave save)
             {
+                Globals.ClearGlobalsOnSaveLoad();
                 Globals.GetLastTimeChain(save.SaveTime.Ticks.ToString());
                 FileLog.Log("Save Game Being Loaded");
                 FileLog.Log("Save Time: " + save.SaveTime.Ticks.ToString());

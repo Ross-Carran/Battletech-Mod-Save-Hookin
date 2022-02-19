@@ -80,6 +80,17 @@ namespace BattletechModSaveHookin
             }
         }
 
+        public static void ClearGlobalsOnSaveLoad()
+        {
+            currentTimeChain = null;
+            lastTimeChain = null;
+            saveReason = null;
+            isIronmanCampaign = false;
+            isCampaign = false;
+            isCareer = false;
+            isStoryMission = false;
+        }
+
         public static string CurrentTimeChain()
         {
             return currentTimeChain;

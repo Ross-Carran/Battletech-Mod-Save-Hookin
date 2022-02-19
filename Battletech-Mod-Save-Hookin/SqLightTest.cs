@@ -83,7 +83,9 @@ namespace BattletechModSaveHookin
                     cmnd.Parameters.Add(lastTimeChainParam);
                     cmnd.ExecuteNonQuery();
                     reader.Dispose();
+                    Globals.GetLastTimeChain(timeChain);
                     FileLog.Log("Made it to the Ironman Loop: " + Globals.SaveReason());
+
                 }
 
                 cmnd.CommandText = "INSERT INTO save_table (id) VALUES (@timeChain)";
