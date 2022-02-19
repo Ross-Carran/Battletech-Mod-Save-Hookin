@@ -50,6 +50,9 @@
     <Compile Include="Battletech-Mod-Save-Hookin.cs" />
     <Compile Include="Globals.cs" />
     <Compile Include="SqLightTest.cs" />
+    <Compile Include="SqLightBase.cs" />
+    <Compile Include="FileGuidEntity.cs" />
+    <Compile Include="FileGuidTable.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Extras\" />
