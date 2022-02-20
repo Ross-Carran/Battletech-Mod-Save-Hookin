@@ -22,7 +22,7 @@ namespace BattletechModSaveHookin
             {
                 Directory.CreateDirectory(mod_Save_Path);
             }
-            db_connection_string = "URI=file:" + mod_Save_Path + "/" + database_name;
+            db_connection_string = "URI=file:" + mod_Save_Path + "/" + database_name + ";foreign_keys = 1;";
             FileLog.Log("db_connection_string: " + db_connection_string);
             db_connection = new SqliteConnection(db_connection_string);
             db_connection.Open();

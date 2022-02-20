@@ -8,6 +8,11 @@ namespace BattletechModSaveHookin
             FileGuidTable fileGuids = new FileGuidTable();
             fileGuids.AddData(new FileGuidEntity(Globals.FileGuid()));
             fileGuids.Close();
+
+            FileGuidAndTimeChainTable fileGuidsAndTimeChains = new FileGuidAndTimeChainTable();
+            fileGuidsAndTimeChains.FakeEntry();
+            fileGuidsAndTimeChains.Close();
+            
         }
 
         public WorkSpace()
