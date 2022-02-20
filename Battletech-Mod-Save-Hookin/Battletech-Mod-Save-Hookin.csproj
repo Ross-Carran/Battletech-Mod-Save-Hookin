@@ -53,6 +53,7 @@
     <Compile Include="SqLightBase.cs" />
     <Compile Include="FileGuidEntity.cs" />
     <Compile Include="FileGuidTable.cs" />
+    <Compile Include="WorkSpace.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Extras\" />

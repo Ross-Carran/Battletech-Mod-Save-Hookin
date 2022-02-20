@@ -1,10 +1,13 @@
-﻿using System;
-namespace BattletechModSaveHookin
+﻿namespace BattletechModSaveHookin
 {
     public class FileGuidEntity
     {
-        public FileGuidEntity()
+
+        public string _id;
+
+        public FileGuidEntity(string id)
         {
+            _id = id;
         }
     }
 }

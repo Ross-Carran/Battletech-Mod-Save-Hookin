@@ -28,6 +28,7 @@ namespace BattletechModSaveHookin
             public static void Postfix(GameInstanceSave __instance, GameInstance gameInstance)
             {
                 FileLog.Log("A Save has been made");
+                Globals.SetFileGuid(__instance);
                 Globals.GetSaveReason(__instance);
                 FileLog.Log("begginer dave reason: " + Globals.SaveReason());
                 Globals.ParamTest(__instance, gameInstance);

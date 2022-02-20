@@ -35,10 +35,12 @@ namespace BattletechModSaveHookin
     static class Globals
     {
         // create a perminant instance of SqLightTest instead of re-creating it every time Dbrun() is called
-        private static SqLightTest test = new SqLightTest();
+        // private static SqLightTest test = new SqLightTest();
+        private static WorkSpace test = new WorkSpace();
         private static string currentTimeChain;
         private static string lastTimeChain;
         private static string saveReason;
+        private static string fileGuid;
         private static bool isIronmanCampaign;
         private static bool isCampaign;
         private static bool isCareer;
@@ -119,6 +121,16 @@ namespace BattletechModSaveHookin
         public static void GetSaveReason(GameInstanceSave __instance)
         {
             saveReason = __instance.SaveReason.ToString();
+        }
+
+        public static void SetFileGuid(GameInstanceSave __instance)
+        {
+            fileGuid = __instance.InstanceGUID;
+        }
+
+        public static string FileGuid()
+        {
+            return fileGuid;
         }
     }
 }
