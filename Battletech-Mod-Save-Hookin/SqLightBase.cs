@@ -76,6 +76,12 @@ namespace BattletechModSaveHookin
             throw null;
         }
 
+        public virtual string GetTableName()
+        {
+            FileLog.Log(Tag + "This Function is not implimented");
+            throw null;
+        }
+
         //Helper Function
         public IDbCommand GetDbCommand()
         {

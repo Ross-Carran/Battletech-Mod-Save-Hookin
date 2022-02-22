@@ -55,6 +55,7 @@
     <Compile Include="FileGuidTable.cs" />
     <Compile Include="WorkSpace.cs" />
     <Compile Include="FileGuidAndTimeChainTable.cs" />
+    <Compile Include="FileGuidAndTimeChainEntity.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Extras\" />
